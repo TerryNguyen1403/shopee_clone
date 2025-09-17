@@ -31,3 +31,5 @@ Thumbs.db
 
 # optional: coverage reports nếu test
 coverage/
+
+uploads/
