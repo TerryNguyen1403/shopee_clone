@@ -22,6 +22,19 @@ export const addProduct = async (req, res) => {
     }
 }
 
+// Lấy tất cả sản phẩm
+export const getAllProducts = async (req, res) => {
+    try {
+        const allProducts = await Product.find({});
+
+        res.json({
+            message: "Lấy sản phẩm thành công",
+            allProducts
+        })
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+}
 
 // Upload ảnh
 export const uploadImages = (req, res) => {
