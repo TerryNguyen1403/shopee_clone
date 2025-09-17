@@ -80,7 +80,7 @@ const loginUser = async (req, res) => {
 
         if (!existUser) {
             return res.status(400).json({
-                message: "User không tồn tại"
+                message: "Email không tồn tại"
             });
         };
 

@@ -20,6 +20,9 @@ app.use(cors());
 app.use('/api/product', productRoute);
 app.use('/api/user', userRoute);
 
+// Cho phép truy cập file trong /uploads
+app.use('/uploads', express.static('uploads'));
+
 const port = process.env.PORT;
 app.listen(port, (error) => {
     if (!error) {

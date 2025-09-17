@@ -1,9 +1,9 @@
 import Product from '../models/Product.js';
 
 // Thêm sản phẩm
-const addProduct = async (req, res) => {
+export const addProduct = async (req, res) => {
     try {
-        const { name, platform, image, new_price, old_price, description } = req.body;
+        const { name, platform, image, new_price, old_price, description, isFeatured } = req.body;
 
         const newProduct = new Product({
             name: name,
@@ -11,7 +11,8 @@ const addProduct = async (req, res) => {
             image: image,
             new_price: new_price,
             old_price: old_price,
-            description: description
+            description: description,
+            isFeatured: isFeatured
         });
 
         await newProduct.save();
@@ -21,4 +22,13 @@ const addProduct = async (req, res) => {
     }
 }
 
-export { addProduct };
+
+// Upload ảnh
+export const uploadImages = (req, res) => {
+    if(!req.file) {
+        return res.status(400).json({ error: "Không có ảnh "});
+    }
+
+    const imgUrl = `http://localhost:4000/uploads/${req.file.filename}`;
+    res.json({ img_url: imgUrl });
+};
