@@ -36,6 +36,21 @@ export const getAllProducts = async (req, res) => {
     }
 }
 
+// Lấy ra sản phẩm nổi bật
+export const getFeaturedProducts = async (req, res) => {
+    try {
+        const featuredProducts = await Product.find({ isFeatured: true });
+
+        res.json({
+            message: "Lấy ra sản phẩm nổi bật thành công",
+            featuredProducts
+        })
+
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+}
+
 // Upload ảnh
 export const uploadImages = (req, res) => {
     if(!req.file) {
