@@ -7,6 +7,7 @@ import {
     addProduct,
     getAllProducts,
     getFeaturedProducts,
+    getNewProducts,
     uploadImages
 } from '../controllers/productController.js';
 
@@ -17,6 +18,7 @@ const router = express.Router();
 router.post('/add-product', addProduct);
 router.get('/all-products', getAllProducts);
 router.get('/featured-products', getFeaturedProducts);
+router.get('/new-products', getNewProducts);
 
 // Upload ảnh
 router.post('/upload', upload.single('product'), uploadImages);
